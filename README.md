@@ -40,7 +40,7 @@ Batch scheme (identical across all scripts):
 - Batch `k` covers replicates `((k-1)*1000 + 1):(k*1000)`.
 - The seed is `1` for batch 1 and `(k-1)*1000` for `k > 1`.
 - Each batch is saved to its own `<dist>_nonboot_sims_batch_<k>.RData` or
-  `<dist>_boot_sims_batch_<k>.RData` file (never cumulative).
+  `<dist>_boot_sims_batch_<k>.RData` file.
 - `boot_replicates` is 1100 and must stay above `max(n_values)` for `bca` to be valid.
 
 ### Helper scripts
