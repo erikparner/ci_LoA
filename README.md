@@ -42,30 +42,18 @@ Batch scheme (identical across all scripts):
 - Each batch is saved to its own `<dist>_nonboot_sims_batch_<k>.RData` or
   `<dist>_boot_sims_batch_<k>.RData` file (never cumulative).
 - `boot_replicates` is 1100 and must stay above `max(n_values)` for `bca` to be valid.
-- Non-bootstrap and bootstrap runs are independent, so replicate `j` is not
-  guaranteed to be the same simulated data on both sides.
 
 ### Helper scripts
-- `Run simulations.R`: runs the four non-bootstrap scripts. Bootstrap batches are run by hand.
 - `Combine simulations.R`: for each distribution, row-binds the batch files
   (up to `max_batch`, the furthest completed bootstrap batch). It then
   `full_join`s the non-bootstrap and bootstrap results on `(n, replicate)` and
   saves `Data/<dist>_combined_sims.RData`.
   Batch files must be in `Data/` first.
 - `exquantile_R.R`: Sasaki-Wang quantile CI implementation.
-- `tools.R`: `archive_html()` dates and PDF-converts a rendered report.
-
-### Other scripts
-- `Check min sample with finite CI for median.R`, `Check SW feasibility by sample size.R`: feasibility checks.
-- `Check numbers in manuscript.R`, `Tabel1+2+3.qmd`: manuscript numbers and tables.
-- `Mixture density.R`: exploration of the mixture distribution.
-- `Example interrater data.R`: worked example using `Data/SM1--interraterdata.csv`.
 
 ### Conventions
 - Result columns are named `<method>_<lower/upper>_<coverage/width>`, so figure code works for any distribution.
 - `batch_seed()` and the batch size (1000) are identical across all distributions.
 - To add a distribution, copy the closest existing script pair and edit the true values and the `r...()` call.
-
-### Folders
 `Data/` (inputs and combined results), `Results/`, `Papers/`, `Communication/`, `Develop exact CI(PI)/`, `Test and development/`, `Old versions/`.
 
