@@ -33,7 +33,7 @@ It sets its own `true_lower`, `true_upper`, `true_median` and the
 
 | Script type | Behaviour |
 |---|---|
-| `Simulate <dist> non-bootstrap.R` | Loops through all batches up to `target_total = 50000` (50 batches). Skips batches whose file already exists. A single run completes everything remaining. |
+| `Simulate <dist> non-bootstrap.R` | Loops through all batches up to `target_total = 25000` (25 batches). Skips batches whose file already exists. A single run completes everything remaining. |
 | `Simulate <dist> bootstrap batch <k>.R` | One batch per run, set by `batch <- <k>`. Stops if the batch file exists. Intended to run on separate computers because `boot::boot()` is slow. |
 
 Batch scheme (identical across all scripts):
