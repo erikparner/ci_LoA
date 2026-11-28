@@ -1,7 +1,7 @@
 # ci_LoA
 Simulations for the coverage of various confidence intervals for the LoA limits.
 
-R scripts for creating the simulations in the manuscript `Confidence Intervals 
+R scripts for creating the simulations in the manuscript `Confidence Intervals
 for Bland-Altman Limits of Agreementon`, by Oke Gerke and Erik Thorlund Parner. 
 
 ## Simulation scripts: organization
