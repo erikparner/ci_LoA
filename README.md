@@ -1,13 +1,13 @@
 # ci_LoA
-Simulations for the coverage of various confidence intervals for the LoA limits
+Simulations for the coverage of various confidence intervals for the LoA limits.
 
-R scripts for creating the simulations in the manuscript Confidence Intervals 
-for Bland-Altman Limits of Agreementon, by Oke Gerke and Erik Thorlund Parner. 
+R scripts for creating the simulations in the manuscript `Confidence Intervals 
+for Bland-Altman Limits of Agreementon`, by Oke Gerke and Erik Thorlund Parner. 
 
 ## Simulation scripts: organization
 
-Monte Carlo simulations that compare methods for prediction intervals (PI) /
-limits of agreement (LoA) and for confidence intervals of the median. They
+Monte Carlo simulations that compare methods for confidence intervals for the
+prediction intervals (PI) / limits of agreement (LoA) and for the median. They
 vary sample size and data-generating distribution (`normal`, `lognormal`,
 `chisq4`, `mixture`). 
 
@@ -26,15 +26,15 @@ vary sample size and data-generating distribution (`normal`, `lognormal`,
 - Bootstrap (`boot` / `boot.ci`: `norm`, `perc`, `bca`; bootstrap scripts only)
 
 ### Simulation scripts
-Each script computes PI/LoA and median results together for every replicate.
+Each script computes PI/LoA and median with CI results together for every replicate.
 It sets its own `true_lower`, `true_upper`, `true_median` and the
 `outcome <- r...()` call. The sample-size grid `n_values` is
 `seq(10, 1000, by = 10)` plus 5, 6, 145 and 146.
 
 | Script type | Behaviour |
 |---|---|
-| `Simulate <dist> non-bootstrap.R` | Loops through all batches up to `target_total = 25000` (25 batches). Skips batches whose file already exists. A single run completes everything remaining. |
-| `Simulate <dist> bootstrap batch <k>.R` | One batch per run, set by `batch <- <k>`. Stops if the batch file exists. Intended to run on separate computers because `boot::boot()` is slow. |
+| `Simulate <dist> non-bootstrap.R` | Loops through all batches up to `target_total = 25000` (25 batches). A single run completes everything. |
+| `Simulate <dist> bootstrap batch <k>.R` | One batch per run, set by `batch <- <k>`. Intended to run on separate computers because `boot::boot()` is slow. |
 
 Batch scheme (identical across all scripts):
 - Batch `k` covers replicates `((k-1)*1000 + 1):(k*1000)`.
@@ -45,7 +45,7 @@ Batch scheme (identical across all scripts):
 
 ### Helper scripts
 - `Combine simulations.R`: for each distribution, row-binds the batch files
-  (up to `max_batch`, the furthest completed bootstrap batch). It then
+  (up to `max_batch`). It then
   `full_join`s the non-bootstrap and bootstrap results on `(n, replicate)` and
   saves `Data/<dist>_combined_sims.RData`.
   Batch files must be in `Data/` first.
